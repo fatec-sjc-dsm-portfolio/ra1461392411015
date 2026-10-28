@@ -73,18 +73,18 @@ export interface Contato {
 }
 
 export const perfil: Perfil = {
-  nome: '[preencher] Nome Completo',
+  nome: 'André Salerno',
   titulo: 'Desenvolvedor de Software',
   formacao: 'Cursando Desenvolvimento de Software Multiplataforma – FATEC São José dos Campos',
   periodo: '2024 – 2026',
   foto: 'foto.jpg',
   resumo:
-    '[preencher] Um parágrafo curto contando quem você é, o que te motiva e o tipo de problema que gosta de resolver.',
+    'Com o desenvolvimento de software, passei a ser um melhor gestor em finanças e economia',
   objetivos: [
-    '[preencher] Objetivo acadêmico (ex.: aprofundar estudos em Processamento de Linguagem Natural).',
-    '[preencher] Objetivo profissional (ex.: atuar como desenvolvedor full stack em produtos com IA).',
+    'Objetivo acadêmico: criação de aplicações automatizadas que apoiem decisões econômico-financeiras',
+    'Objetivo profissional: atuar como um gestor de riscos financeiros desenvolvidos com IA',
   ],
-  interesses: ['Desenvolvimento Web', 'APIs REST', 'Inteligência Artificial', 'Processamento de Linguagem Natural'],
+  interesses: ['Desenvolvimento Web', 'APIs REST', 'Inteligência Artificial', 'Processamento de Linguagem Natural', 'Economia', 'Finanças', 'Modelagem Estatística'],
 }
 
 // Nível de 1 (ouvi falar) a 5 (fluente) — conforme orientação do roteiro.
@@ -102,30 +102,34 @@ export const competencias: GrupoCompetencias[] = [
     itens: [
       { nome: 'Python', nivel: 4 },
       { nome: 'JavaScript', nivel: 4 },
-      { nome: 'TypeScript', nivel: 3 },
-      { nome: 'SQL', nivel: 3 },
+      { nome: 'TypeScript', nivel: 4 },
+      { nome: 'SQL', nivel: 4 },
     ],
   },
   {
     categoria: 'Frameworks e bibliotecas',
     itens: [
-      { nome: 'React', nivel: 3 },
-      { nome: 'Node.js / Express', nivel: 3 },
-      { nome: 'Flask', nivel: 3 },
+      { nome: 'React', nivel: 4 },
+      { nome: 'Node.js / Express', nivel: 4 },
+      { nome: 'Flask', nivel: 4 },
+      { nome: 'React-Native', nivel: 4 },
+      { nome: 'Flutter', nivel: 4 },
     ],
   },
   {
     categoria: 'Banco de dados',
     itens: [
-      { nome: 'PostgreSQL / MySQL', nivel: 3 },
-      { nome: 'MongoDB', nivel: 2 },
+      { nome: 'PostgreSQL / MySQL', nivel: 4 },
+      { nome: 'MongoDB', nivel: 4 },
     ],
   },
   {
     categoria: 'Ferramentas',
     itens: [
       { nome: 'Git / GitHub', nivel: 4 },
-      { nome: 'Docker', nivel: 2 },
+      { nome: 'Docker', nivel: 3 },
+      { nome: 'Jira', nivel: 4 },
+      { nome: 'Figma', nivel: 4 },
     ],
   },
 ]
@@ -184,12 +188,12 @@ export const curriculo: Curriculo = {
   ],
   certificacoes: [{ nome: '[preencher] Certificação', emissor: '[preencher]', ano: '2025' }],
   eventos: [{ nome: '[preencher] Evento / Hackathon', descricao: '[preencher] Participação ou resultado', ano: '2025' }],
-  idiomas: [{ idioma: 'Inglês', nivel: '[preencher] Intermediário' }],
+  idiomas: [{ idioma: 'Inglês', nivel: 'Intermediário' }],
   publicacoes: [], // ex.: { titulo: '...', veiculo: '...', ano: '2026', link: '' }
 }
 
 export const contato: Contato = {
   email: '', // opcional
-  github: 'https://github.com/[seu-usuario]',
-  linkedin: 'https://www.linkedin.com/in/[seu-perfil]',
+  github: 'https://github.com/andresalerno',
+  linkedin: 'https://www.linkedin.com/in/andresalerno',
 }
