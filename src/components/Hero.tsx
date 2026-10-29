@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { perfil, contato } from '../data/portfolio'
+import { LinkExterno, Lista, Tags } from './ui'
 
 function Foto() {
   const [erro, setErro] = useState(false)
@@ -34,7 +35,7 @@ export default function Hero() {
           <p className="resumo">{perfil.resumo}</p>
           <div className="hero-acoes">
             <a className="btn" href="#projetos">Ver projetos</a>
-            <a className="btn btn-sec" href={contato.github} target="_blank" rel="noreferrer">GitHub</a>
+            <LinkExterno className="btn btn-sec" href={contato.github}>GitHub</LinkExterno>
           </div>
         </div>
       </div>
@@ -42,15 +43,11 @@ export default function Hero() {
       <div className="hero-cards">
         <div className="card">
           <h3>Objetivos acadêmicos e profissionais</h3>
-          <ul>
-            {perfil.objetivos.map((o) => <li key={o}>{o}</li>)}
-          </ul>
+          <Lista itens={perfil.objetivos} />
         </div>
         <div className="card">
           <h3>Áreas de interesse</h3>
-          <div className="tags">
-            {perfil.interesses.map((i) => <span key={i} className="tag">{i}</span>)}
-          </div>
+          <Tags itens={perfil.interesses} />
         </div>
       </div>
     </section>

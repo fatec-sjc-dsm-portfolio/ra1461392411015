@@ -1,5 +1,5 @@
 import { competencias, niveis } from '../data/portfolio'
-import Estrelas from './Estrelas'
+import { ListaSkills } from './ui'
 
 export default function Competencias() {
   return (
@@ -14,14 +14,7 @@ export default function Competencias() {
         {competencias.map((grupo) => (
           <div className="card" key={grupo.categoria}>
             <h3>{grupo.categoria}</h3>
-            <ul className="lista-skills">
-              {grupo.itens.map((s) => (
-                <li key={s.nome}>
-                  <span>{s.nome}</span>
-                  <Estrelas nivel={s.nivel} />
-                </li>
-              ))}
-            </ul>
+            <ListaSkills itens={grupo.itens} />
           </div>
         ))}
       </div>

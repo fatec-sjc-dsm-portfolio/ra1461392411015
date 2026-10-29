@@ -4,7 +4,6 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Competencias from './components/Competencias'
 import Projetos from './components/Projetos'
-import Curriculo from './components/Curriculo'
 import Contato from './components/Contato'
 
 export default function App() {
@@ -19,7 +18,6 @@ export default function App() {
         <Hero />
         <Projetos />
         <Competencias />
-        <Curriculo />
         <Contato />
       </main>
       <footer className="footer">

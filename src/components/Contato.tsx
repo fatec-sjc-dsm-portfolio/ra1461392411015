@@ -1,4 +1,5 @@
 import { contato } from '../data/portfolio'
+import { LinkExterno } from './ui'
 
 interface Link {
   label: string
@@ -18,7 +19,7 @@ export default function Contato() {
       <p className="intro">Vamos conversar sobre oportunidades, projetos ou parcerias.</p>
       <div className="hero-acoes centro">
         {links.map((l) => (
-          <a key={l.label} className="btn btn-sec" href={l.href} target="_blank" rel="noreferrer">{l.label}</a>
+          <LinkExterno key={l.label} className="btn btn-sec" href={l.href}>{l.label}</LinkExterno>
         ))}
       </div>
     </section>

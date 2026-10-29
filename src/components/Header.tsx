@@ -4,7 +4,6 @@ const secoes = [
   { id: 'sobre', label: 'Sobre' },
   { id: 'projetos', label: 'Projetos' },
   { id: 'competencias', label: 'Competências' },
-  { id: 'curriculo', label: 'Currículo' },
   { id: 'contato', label: 'Contato' },
 ]
 

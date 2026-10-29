@@ -4,73 +4,13 @@
 // A foto deve ser colocada em public/foto.jpg (ou altere o caminho abaixo).
 // ============================================================================
 
-export type Nivel = 1 | 2 | 3 | 4 | 5
-
-export interface Skill {
-  nome: string
-  nivel: Nivel
-}
-
-export interface Perfil {
-  nome: string
-  titulo: string
-  formacao: string
-  periodo: string
-  foto: string
-  resumo: string
-  objetivos: string[]
-  interesses: string[]
-}
-
-export interface GrupoCompetencias {
-  categoria: string
-  itens: Skill[]
-}
-
-export interface ProjetoAcademico {
-  semestre: number
-  titulo: string
-  empresa: string
-  problema: string
-  solucao: string
-  tecnologias: string[]
-  repositorio: string
-  contribuicoes: string[]
-  hardSkills: Skill[]
-  softSkills: string[]
-  imagens: string[]
-}
-
-export interface ProjetoProfissional {
-  titulo: string
-  empresa: string
-  periodo: string
-  descricao: string
-  tecnologias: string[]
-  contribuicoes: string[]
-}
-
-export interface ProjetoPessoal {
-  titulo: string
-  descricao: string
-  tecnologias: string[]
-  repositorio?: string
-  demo?: string
-}
-
-export interface Curriculo {
-  formacao: { curso: string; instituicao: string; periodo: string }[]
-  certificacoes: { nome: string; emissor: string; ano: string }[]
-  eventos: { nome: string; descricao: string; ano: string }[]
-  idiomas: { idioma: string; nivel: string }[]
-  publicacoes: { titulo: string; veiculo: string; ano: string; link?: string }[]
-}
-
-export interface Contato {
-  email?: string
-  github: string
-  linkedin: string
-}
+import type {
+  Nivel,
+  Perfil,
+  GrupoCompetencias,
+  ProjetoAcademico,
+  Contato,
+} from './tipos'
 
 export const perfil: Perfil = {
   nome: 'André Salerno',
@@ -102,6 +42,7 @@ export const competencias: GrupoCompetencias[] = [
     itens: [
       { nome: 'Python', nivel: 4 },
       { nome: 'JavaScript', nivel: 4 },
+      { nome: 'Java', nivel: 4 },
       { nome: 'TypeScript', nivel: 4 },
       { nome: 'SQL', nivel: 4 },
     ],
@@ -121,6 +62,8 @@ export const competencias: GrupoCompetencias[] = [
     itens: [
       { nome: 'PostgreSQL / MySQL', nivel: 4 },
       { nome: 'MongoDB', nivel: 4 },
+      { nome: 'Redis', nivel: 3 },
+      { nome: 'Cassandra', nivel: 4 },
     ],
   },
   {
@@ -140,57 +83,161 @@ export const competencias: GrupoCompetencias[] = [
 // "falta de sistema". O repositório deve ser uma CÓPIA no seu GitHub pessoal.
 // Empresa parceira: apenas o nome, sem logo.
 // ---------------------------------------------------------------------------
-const apiModelo = (semestre: number): ProjetoAcademico => ({
-  semestre,
-  titulo: `[preencher] Nome do projeto API – ${semestre}º semestre`,
-  empresa: '[preencher] Empresa parceira',
-  problema:
-    '[preencher] Descreva a situação-problema que motivou o projeto (ex.: a necessidade de monitorar, organizar e controlar o atendimento de demandas...).',
-  solucao: '[preencher] Descreva a solução desenvolvida e como ela resolve o problema.',
-  tecnologias: ['[preencher]'],
-  repositorio: 'https://github.com/[seu-usuario]/[copia-do-repositorio]',
-  contribuicoes: ['[preencher] O que você fez pessoalmente no projeto.'],
-  hardSkills: [{ nome: '[preencher] Ex.: React', nivel: 3 }],
-  softSkills: ['[preencher] Ex.: Trabalho em equipe com Scrum'],
-  imagens: [], // ex.: ['api1-tela.png'] — arquivos em public/
-})
-
-export const projetosAcademicos: ProjetoAcademico[] = [1, 2, 3, 4, 5, 6].map(apiModelo)
-
-export const projetosProfissionais: ProjetoProfissional[] = [
+export const projetosAcademicos: ProjetoAcademico[] = [
   {
-    titulo: '[preencher] Projeto/atividade do estágio ou emprego',
-    empresa: '[preencher] Empresa',
-    periodo: '[preencher] 2025 – atual',
-    descricao: '[preencher] Contexto, o que foi desenvolvido e qual foi o resultado.',
-    tecnologias: ['[preencher]'],
-    contribuicoes: ['[preencher]'],
+    semestre: 1,
+    titulo: 'Smart Farm – Painel de monitoramento de estufa',
+    empresa: 'Projeto Interno FATEC',
+    problema:
+      'Os dados ambientais de uma estufa de hortaliças (temperatura, umidade do solo, umidade do ar e volume de água), captados por uma câmera com sensores, eram coletados e analisados manualmente em planilhas Excel. O processo era moroso para a equipe e dificultava o acompanhamento contínuo do desenvolvimento das plantas.',
+    solucao:
+      'Aplicação web que importa os arquivos CSV gerados pelos sensores, armazena as leituras em banco MySQL e exibe os últimos valores e gráficos históricos, com filtro por período e exportação dos dados filtrados em CSV. A aplicação foi empacotada com Docker e hospedada em um Raspberry Pi 3.',
+    tecnologias: ['Python', 'Flask', 'Pandas', 'Plotly', 'MySQL', 'HTML', 'CSS', 'Docker', 'Raspberry Pi'],
+    repositorio: 'https://github.com/SkyFlyTeam/SmartFarm',
+    contribuicoes: [
+      'Scrum Master da equipe: condução das cerimônias e acompanhamento das quatro sprints.',
+      'Criação e estruturação do repositório do projeto.',
+      'Documentação do projeto: README, cronograma de sprints, papéis Scrum e backlog.',
+    ],
+    hardSkills: [
+      { nome: 'Python', nivel: 3 },
+      { nome: 'Flask', nivel: 2 },
+      { nome: 'MySQL', nivel: 2 },
+      { nome: 'Git / GitHub', nivel: 3 },
+      { nome: 'Scrum', nivel: 3 },
+    ],
+    softSkills: ['Liderança como Scrum Master', 'Organização e planejamento de entregas', 'Comunicação com a equipe e os orientadores'],
+    imagens: [],
+  },
+  {
+    semestre: 2,
+    titulo: 'Cloud Stock – Controle de estoque',
+    empresa: 'Projeto Interno FATEC',
+    problema:
+      'A gestão de estoque era feita de forma manual, sujeita a erros humanos e sem visibilidade de onde cada produto estava armazenado. Faltavam avisos de estoque mínimo e de produtos próximos da validade, o que gerava rupturas e perdas, e não havia um histórico confiável de entradas e saídas para auditoria.',
+    solucao:
+      'Sistema web para cadastro de produtos, fornecedores, locais e setores, com registro de entradas e saídas por responsável e data e três níveis de acesso (administrador, gerente e funcionário). O sistema emite alertas de estoque baixo e de validade próxima e gera relatórios de movimentação e métricas de vendas e perdas.',
+    tecnologias: ['TypeScript', 'React', 'Node.js', 'MySQL', 'Docker', 'Figma', 'Jira'],
+    repositorio: 'https://github.com/SkyFlyTeam/cloudStock',
+    contribuicoes: [
+      'Scrum Master da equipe: planejamento das sprints, DoR/DoD e acompanhamento do backlog.',
+      'Criação do repositório e manutenção da documentação de requisitos.',
+    ],
+    hardSkills: [
+      { nome: 'TypeScript', nivel: 3 },
+      { nome: 'React', nivel: 2 },
+      { nome: 'Node.js', nivel: 2 },
+      { nome: 'Modelagem de requisitos (user stories)', nivel: 3 },
+      { nome: 'Scrum', nivel: 4 },
+    ],
+    softSkills: ['Liderança como Scrum Master', 'Facilitação e resolução de impedimentos', 'Priorização junto ao Product Owner'],
+    imagens: [],
+  },
+  {
+    semestre: 3,
+    titulo: 'BeeOnTime – Ponto eletrônico e banco de horas',
+    empresa: 'Nectus',
+    problema:
+      'O acompanhamento da jornada dos colaboradores envolve muitas informações espalhadas: marcações de ponto, horas extras, férias, folgas, justificativas e ajustes. Sem um controle centralizado, calcular o banco de horas e conferir o espelho de ponto se torna trabalhoso e sujeito a erros para o RH e os gestores.',
+    solucao:
+      'Aplicação web responsiva para marcação de ponto, espelho de ponto, banco de horas, solicitações e justificativas, com relatórios detalhados e envio de notificações. O back-end em Java/Spring Boot é organizado em serviços, e o front-end é feito em Next.js com TypeScript.',
+    tecnologias: ['Java', 'Spring Boot', 'TypeScript', 'React', 'Next.js', 'MySQL', 'MongoDB', 'Redis', 'Docker'],
+    repositorio: 'https://github.com/SkyFlyTeam/BeeOnTime-documentation',
+    contribuicoes: [
+      'Scrum Master da equipe.',
+      'Estrutura inicial do back-end com Docker Compose, configurando os bancos relacional e não relacional e o Redis.',
+      'Desenvolvimento das telas de colaborador no front-end: modal de cadastro, máscara de CPF e seleção de nível de acesso.',
+    ],
+    hardSkills: [
+      { nome: 'Docker / Docker Compose', nivel: 3 },
+      { nome: 'Java / Spring Boot', nivel: 2 },
+      { nome: 'React / Next.js', nivel: 3 },
+      { nome: 'TypeScript', nivel: 3 },
+      { nome: 'Scrum', nivel: 4 },
+    ],
+    softSkills: ['Liderança como Scrum Master', 'Revisão colaborativa de código (pull requests)', 'Adaptação a feedback'],
+    imagens: [],
+  },
+  {
+    semestre: 4,
+    titulo: 'Atmos – Monitoramento meteorológico e alertas',
+    empresa: 'Tecsus',
+    problema:
+      'Acidentes ligados a condições meteorológicas, como deslizamentos de terra e inundações, têm se tornado mais frequentes. As áreas mais carentes de São José dos Campos são as mais afetadas e não contam com nenhum tipo de aviso ou alerta quando esses eventos estão para acontecer.',
+    solucao:
+      'Plataforma que coleta dados de estações meteorológicas distribuídas pela cidade e exibe dashboards por estação e consolidados, com envio de alertas em situações de risco e guias educativos sobre cada parâmetro. A arquitetura é distribuída: as estações (Arduino) publicam via MQTT, um receptor em Python grava no MongoDB Atlas e um processador em TypeScript valida, calibra e persiste os dados no PostgreSQL, consumidos pela API Express e pelo front-end em Next.js.',
+    tecnologias: ['TypeScript', 'Next.js', 'React', 'Node.js / Express', 'Sequelize', 'PostgreSQL', 'MongoDB Atlas', 'Python', 'MQTT', 'Arduino', 'Docker', 'GitHub Actions'],
+    repositorio: 'https://github.com/andresalerno/Atmos-processador-dados',
+    contribuicoes: [
+      'Desenvolvimento do processador de dados: conexão com o MongoDB, conversão e persistência das leituras no PostgreSQL e calibração dos valores por fator e offset.',
+      'Criação dos pipelines de CI (GitHub Actions) do back-end, front-end, processador e receptor.',
+      'Método de coleta de dados no receptor MQTT.',
+      'Telas de listagem e cadastro de usuários e landing page do front-end.',
+    ],
+    hardSkills: [
+      { nome: 'TypeScript / Node.js', nivel: 4 },
+      { nome: 'MongoDB', nivel: 3 },
+      { nome: 'PostgreSQL / Sequelize', nivel: 3 },
+      { nome: 'CI/CD com GitHub Actions', nivel: 3 },
+      { nome: 'Next.js / React', nivel: 3 },
+    ],
+    softSkills: ['Trabalho em equipe em arquitetura distribuída', 'Comunicação com a empresa parceira', 'Autonomia na entrega de tarefas técnicas'],
+    imagens: [],
+  },
+  {
+    semestre: 5,
+    titulo: 'Veredito – Apoio à decisão judicial com PLN',
+    empresa: 'Xertica',
+    problema:
+      'O volume de processos judiciais e a complexidade das teses cresceram de forma significativa, tornando difícil para juízes e assessores localizar rapidamente precedentes adequados e fundamentar decisões. Isso prolonga a tramitação dos processos e aumenta o risco de decisões pouco alinhadas à jurisprudência consolidada.',
+    solucao:
+      'Aplicativo para magistrados que recebe a petição inicial em PDF ou DOCX, extrai e analisa o texto, gera um resumo da peça e sugere precedentes ranqueados por similaridade. Cada precedente é classificado como "Aplicável", "Possivelmente aplicável" ou "Não aplicável" e acompanha uma síntese explicativa; o sistema também gera minutas de sentença e de petição inicial.',
+    tecnologias: ['Dart', 'Flutter', 'Riverpod', 'TypeScript', 'NestJS', 'LangChain', 'OpenAI API', 'PostgreSQL', 'Docker', 'Jest'],
+    repositorio: 'https://github.com/SkyFlyTeam/veredito-documentation',
+    contribuicoes: [
+      'Back-end: parser de texto das petições, pipeline de PLN e serviço de geração de resumo com controle de tokens.',
+      'Testes unitários do pipeline executados em Docker e guia de reprodutibilidade do processamento em lote.',
+      'Filtros na pipeline de análise de petição inicial.',
+      'Front-end em Flutter: tela de upload com Clean Architecture e progresso real via Dio, home do juiz, tela de nova análise e modal de geração de minuta.',
+    ],
+    hardSkills: [
+      { nome: 'Processamento de Linguagem Natural', nivel: 3 },
+      { nome: 'NestJS / TypeScript', nivel: 4 },
+      { nome: 'Flutter / Dart', nivel: 3 },
+      { nome: 'Integração com LLMs', nivel: 3 },
+      { nome: 'Testes automatizados', nivel: 3 },
+    ],
+    softSkills: ['Colaboração entre front-end e back-end', 'Passagem de contexto entre membros da equipe', 'Aprendizado rápido de novas tecnologias'],
+    imagens: [],
+  },
+  {
+    semestre: 6,
+    titulo: 'VariSkill – Trilhas de aprendizagem com assistente inteligente',
+    empresa: 'GSW',
+    problema:
+      'Na capacitação técnica corporativa, colaboradores costumam seguir trilhas de aprendizagem lineares e despersonalizadas, o que gera alta evasão e baixa retenção do conhecimento prático. Identificar lacunas conceituais e oferecer acompanhamento pedagógico contínuo e motivador é um dos maiores desafios das empresas de tecnologia.',
+    solucao:
+      'Plataforma de trilhas divididas em módulos e atividades (múltipla escolha, completar código e ordenar blocos) com correção determinística. Um assistente virtual faz o nivelamento inicial, tira dúvidas sem entregar a resposta e dá feedback, apoiado por um motor híbrido de PLN com banco vetorial (pgvector). A gamificação inclui XP, níveis, sequência diária e conquistas.',
+    tecnologias: ['Python', 'Django', 'Django REST Framework', 'PostgreSQL', 'pgvector', 'TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Docker'],
+    repositorio: 'https://github.com/SkyFlyTeam/VariSkill-documentantion',
+    contribuicoes: [
+      'CRUD de atividades e validação determinística das respostas com o padrão Strategy.',
+      'Models de intenções e da base vetorial com pgvector para o PLN local.',
+      'Persistência das respostas por questão, endpoint de diagnóstico de erros e parecer formativo.',
+      'Memória de contexto do histórico pedagógico na sessão do chat.',
+      'Front-end: modais do assistente Vari, sequência de onboarding e modal de resultado com feedback formativo.',
+    ],
+    hardSkills: [
+      { nome: 'Python / Django', nivel: 4 },
+      { nome: 'Banco vetorial (pgvector)', nivel: 3 },
+      { nome: 'Padrões de projeto', nivel: 3 },
+      { nome: 'React / TypeScript', nivel: 4 },
+      { nome: 'Processamento de Linguagem Natural', nivel: 3 },
+    ],
+    softSkills: ['Abertura a code review', 'Visão de produto centrada no usuário', 'Trabalho em equipe com Scrum'],
+    imagens: [],
   },
 ]
-
-export const projetosPessoais: ProjetoPessoal[] = [
-  {
-    titulo: '[preencher] Projeto pessoal',
-    descricao: '[preencher] O que é, por que foi feito e o que você aprendeu.',
-    tecnologias: ['[preencher]'],
-    repositorio: 'https://github.com/[seu-usuario]/[projeto]',
-    demo: '',
-  },
-]
-
-export const curriculo: Curriculo = {
-  formacao: [
-    {
-      curso: 'Tecnólogo em Desenvolvimento de Software Multiplataforma',
-      instituicao: 'FATEC São José dos Campos – Prof. Jessen Vidal',
-      periodo: '2024 – 2026',
-    },
-  ],
-  certificacoes: [{ nome: '[preencher] Certificação', emissor: '[preencher]', ano: '2025' }],
-  eventos: [{ nome: '[preencher] Evento / Hackathon', descricao: '[preencher] Participação ou resultado', ano: '2025' }],
-  idiomas: [{ idioma: 'Inglês', nivel: 'Intermediário' }],
-  publicacoes: [], // ex.: { titulo: '...', veiculo: '...', ano: '2026', link: '' }
-}
 
 export const contato: Contato = {
   email: '', // opcional

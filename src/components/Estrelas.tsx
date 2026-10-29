@@ -1,4 +1,5 @@
-import { niveis, type Nivel } from '../data/portfolio'
+import { niveis } from '../data/portfolio'
+import type { Nivel } from '../data/tipos'
 
 export default function Estrelas({ nivel }: { nivel: Nivel }) {
   return (
