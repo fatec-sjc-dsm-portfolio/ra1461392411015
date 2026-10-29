@@ -9,6 +9,7 @@ import type {
   Perfil,
   GrupoCompetencias,
   ProjetoAcademico,
+  ExperienciaProfissional,
   Contato,
 } from './tipos'
 
@@ -236,6 +237,40 @@ export const projetosAcademicos: ProjetoAcademico[] = [
     ],
     softSkills: ['Abertura a code review', 'Visão de produto centrada no usuário', 'Trabalho em equipe com Scrum'],
     imagens: [],
+  },
+]
+
+// ---------------------------------------------------------------------------
+// Projetos Profissionais — item obrigatório (estágio, emprego ou empresa própria).
+// ---------------------------------------------------------------------------
+export const experienciaProfissional: ExperienciaProfissional[] = [
+  {
+    empresa: 'Data FinTech Solutions',
+    cargo: 'Fundador',
+    periodo: '2016 – atual',
+    site: 'https://www.datafintechsolutions.com',
+    descricao:
+      'Consultoria especializada em inteligência de mercado, crédito e estratégia financeira, que combina consultoria, tecnologia e inteligência de dados para reduzir riscos e tornar operações financeiras mais eficientes. Atuação em políticas e modelagem de crédito, réguas de cobrança, otimização de capital de giro e ambientes orientados a dados, com dashboards, automações e modelos de IA.',
+    projetos: [
+      {
+        titulo: 'Crédito Consignado',
+        descricao:
+          'Criação da política de crédito de uma operação de crédito consignado e automação do processo de ponta a ponta, com back-end, front-end e integrações com serviços externos, como bureaus de crédito.',
+        tags: ['Python', 'Django', 'React', 'PostgreSQL'],
+      },
+      {
+        titulo: 'Reestruturação do processo decisório de crédito',
+        descricao:
+          'Revisão e adequação das políticas e dos processos de concessão de crédito para decisões mais consistentes, com automações que trouxeram economia e menor risco.',
+        tags: ['Políticas de crédito', 'Automações', 'Gestão de risco'],
+      },
+      {
+        titulo: 'Melhorias no fluxo completo de crédito',
+        descricao:
+          'Automatizações e revisões ao longo de todo o fluxo de crédito, apoiadas em modelagem estatística e modelos de detecção de fraude, gerando economias substanciais.',
+        tags: ['Modelagem estatística', 'Modelos de fraude', 'Otimização'],
+      },
+    ],
   },
 ]
 

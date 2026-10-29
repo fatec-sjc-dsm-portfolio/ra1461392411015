@@ -37,6 +37,21 @@ export interface ProjetoAcademico {
   imagens: string[]
 }
 
+export interface ProjetoProfissional {
+  titulo: string
+  descricao: string
+  tags: string[]
+}
+
+export interface ExperienciaProfissional {
+  empresa: string
+  cargo: string
+  periodo: string
+  site?: string
+  descricao: string
+  projetos: ProjetoProfissional[]
+}
+
 export interface Contato {
   email?: string
   github: string

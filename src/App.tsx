@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Competencias from './components/Competencias'
 import Projetos from './components/Projetos'
+import Profissional from './components/Profissional'
 import Contato from './components/Contato'
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
       <main>
         <Hero />
         <Projetos />
+        <Profissional />
         <Competencias />
         <Contato />
       </main>

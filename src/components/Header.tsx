@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 const secoes = [
   { id: 'sobre', label: 'Sobre' },
   { id: 'projetos', label: 'Projetos' },
+  { id: 'profissional', label: 'Experiência' },
   { id: 'competencias', label: 'Competências' },
   { id: 'contato', label: 'Contato' },
 ]
